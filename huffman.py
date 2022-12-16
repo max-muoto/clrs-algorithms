@@ -1,12 +1,12 @@
 import heapq
 
+from tree_node import TreeNode
 
-class Node:
+
+class HuffmanNode(TreeNode):
     def __init__(self, val, freq, left=None, right=None):
-        self.val = val
+        super().__init__(val, left, right)
         self.freq = freq
-        self.left = left
-        self.right = right
 
 
 def huffman(c):
@@ -18,14 +18,14 @@ def huffman(c):
         freq = x[0] + y[0]
         left = x[1]
         right = y[1]
-        z = Node(None, freq, left, right)
+        z = HuffmanNode(None, freq, left, right)
         heapq.heappush(c, (freq, z))
     return heapq.heappop(c)
 
 
 def main():
-    chars = [(5, Node("A", 5)), (9, Node("E", 9)), (12, Node("C", 12)),
-             (13, Node("B", 13)), (16, Node("D", 16)), (45, Node("A", 45))]
+    chars = [(5, HuffmanNode("A", 5)), (9, HuffmanNode("E", 9)), (12, HuffmanNode("C", 12)),
+             (13, HuffmanNode("B", 13)), (16, HuffmanNode("D", 16)), (45, HuffmanNode("A", 45))]
     # Root node for the tree
     node = huffman(chars)[1]
     print(node.freq)
