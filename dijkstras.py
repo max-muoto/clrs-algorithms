@@ -27,8 +27,9 @@ class Dijkstras:
             curr_vertex = curr_set[1]
             for adjacent_vertex in edges[curr_vertex]:
                 # Check if we can decrease the distance
-                possible_value = distances[curr_vertex] + \
-                    edges[curr_vertex][adjacent_vertex]
+                possible_value = (
+                    distances[curr_vertex] + edges[curr_vertex][adjacent_vertex]
+                )
 
                 # If so, update our dictionaries and the PQ
                 if possible_value < distances[adjacent_vertex]:
@@ -37,15 +38,3 @@ class Dijkstras:
                     # Decrease key in PQ.
                     pq.put((possible_value, adjacent_vertex))
         return distances
-
-
-def main():
-    graph = Graph(GraphType.DIRECTED)
-    graph.add_vertices(["A", "B", "C", "D", "E"])
-    graph.add_edges([("A", "B", 6), ("A", "D", 1), ("B", "D", 2),
-                    ("D", "E", 1), ("B", "E", 2), ("B", "C", 5), ("E", "C", 5)])
-    print("Shortest-paths are: ", Dijkstras.shortest_path(graph, "A"))
-
-
-if __name__ == "__main__":
-    main()
