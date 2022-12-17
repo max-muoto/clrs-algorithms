@@ -1,5 +1,5 @@
 import heapq
-from graph import Graph, GraphType
+from utility_classes.graph import Graph, GraphType
 
 
 class Prims:

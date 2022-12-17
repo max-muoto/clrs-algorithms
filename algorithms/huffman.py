@@ -1,6 +1,6 @@
 import heapq
 
-from tree_node import TreeNode
+from utility_classes.tree_node import TreeNode
 
 
 class HuffmanNode(TreeNode):

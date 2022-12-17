@@ -1,7 +1,6 @@
 import unittest
-from dijkstras import Dijkstras
-
-from graph import Graph, GraphType
+from algorithms.dijkstras import Dijkstras
+from utility_classes.graph import Graph, GraphType
 
 
 class DijkstrasTest(unittest.TestCase):

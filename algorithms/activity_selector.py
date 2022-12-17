@@ -19,7 +19,7 @@ def main():
     f = [4, 5, 6, 7, 9, 9, 10, 11, 12, 14, 16]
     n = len(s) - 1
     # Our resulting set contains the index of each mutually compatiable activity.
-    result = recursive_activity_selector(s, f,0, n)
+    result = recursive_activity_selector(s, f, 0, n)
     print(result)
 
 
