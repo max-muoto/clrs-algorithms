@@ -4,8 +4,10 @@ from typing import Dict, Optional, Set, List, Union, Tuple
 
 
 class GraphType(Enum):
-    UNDIRECTED = 1
-    DIRECTED = 2
+    UNDIRECTED_UNWEIGHTED = 1
+    UNDIRECTED_WEIGHTED = 2
+    DIRECTED_UNWEIGHTED = 3
+    DIRECTED_WEIGHTED = 4
 
 
 class Graph:
@@ -15,23 +17,25 @@ class Graph:
 
     def __init__(self, graph_type: GraphType):
         self.graph_type = graph_type
-        if self.is_directed_graph():
+        if self.is_weighted_graph():
             self.edges = defaultdict(dict)
-        elif self.is_undirected_graph():
-            self.edges = {}
+        elif not self.is_weighted_graph():
+            self.edges = defaultdict(set)
         self.vertices = set()
 
     def is_directed_graph(self):
-        return self.graph_type == GraphType.DIRECTED
+        return self.graph_type == GraphType.DIRECTED_UNWEIGHTED or self.graph_type == GraphType.DIRECTED_WEIGHTED 
 
-    def is_undirected_graph(self):
-        return self.graph_type == GraphType.UNDIRECTED
+    def is_weighted_graph(self):
+        return self.graph_type == GraphType.UNDIRECTED_WEIGHTED or self.graph_type == GraphType.DIRECTED_WEIGHTED 
+
 
     def add_edge(self, u: str, v: str, weight: Optional[int]):
-        if weight and self.is_directed_graph():
+        if weight and self.is_weighted_graph():
             self.edges[u][v] = weight
-            self.edges[v][u] = weight
-        elif self.is_undirected_graph():
+            if self.is_undirected_graph():
+                self.edges[v][u] = weight
+        elif not self.is_weighted_graph():
             self.edges[u].add(v)
             self.edges[v].add(u)
         else:
@@ -43,11 +47,12 @@ class Graph:
         for edges in edges:
             u = edges[0]
             v = edges[1]
-            if weighted_edges and self.is_directed_graph():
+            if weighted_edges and self.is_weighted_graph():
                 weight = edges[2]
                 self.edges[u][v] = weight
-                self.edges[v][u] = weight
-            elif self.is_undirected_graph():
+                if not self.is_directed_graph():
+                    self.edges[v][u] = weight
+            elif not self.is_weighted_graph():
                 self.edges[u].add(v)
                 self.edges[v].add(u)
             else:

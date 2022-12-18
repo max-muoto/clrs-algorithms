@@ -5,7 +5,7 @@ from utility_classes.graph import Graph, GraphType
 
 class DijkstrasTest(unittest.TestCase):
     def test_simple_shortest_path(self):
-        graph = Graph(GraphType.DIRECTED)
+        graph = Graph(GraphType.UNDIRECTED_WEIGHTED)
         graph.add_vertices(["A", "B", "C", "D", "E"])
         graph.add_edges(
             [
@@ -19,7 +19,7 @@ class DijkstrasTest(unittest.TestCase):
             ]
         )
         shortest_paths = {"A": 0, "B": 3, "D": 1, "E": 2, "C": 7}
-        self.assertEqual(Dijkstras(graph, "A"), shortest_paths)
+        self.assertEqual(Dijkstras.shortest_path(graph, "A"), shortest_paths)
 
 
 if __name__ == "__main__":
