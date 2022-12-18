@@ -2,7 +2,6 @@ from queue import PriorityQueue
 
 from utility_classes.graph import Graph
 
-
 class Dijkstras:
     @staticmethod
     def shortest_path(graph: Graph, source: str):

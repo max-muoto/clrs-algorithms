@@ -19,7 +19,7 @@ class Graph:
         self.graph_type = graph_type
         if self.is_weighted_graph():
             self.edges = defaultdict(dict)
-        elif not self.is_weighted_graph():
+        else:
             self.edges = defaultdict(set)
         self.vertices = set()
 
@@ -33,7 +33,7 @@ class Graph:
     def add_edge(self, u: str, v: str, weight: Optional[int]):
         if weight and self.is_weighted_graph():
             self.edges[u][v] = weight
-            if self.is_undirected_graph():
+            if not self.is_directed_graph():
                 self.edges[v][u] = weight
         elif not self.is_weighted_graph():
             self.edges[u].add(v)
@@ -45,19 +45,11 @@ class Graph:
     def add_edges(self, edges: Union[List[Tuple[str, str]], List[Tuple[str, str, int]]]):
         weighted_edges = len(edges[0]) == 3
         for edges in edges:
-            u = edges[0]
-            v = edges[1]
-            if weighted_edges and self.is_weighted_graph():
-                weight = edges[2]
-                self.edges[u][v] = weight
-                if not self.is_directed_graph():
-                    self.edges[v][u] = weight
-            elif not self.is_weighted_graph():
-                self.edges[u].add(v)
-                self.edges[v].add(u)
+            if weighted_edges:
+                self.add_edge(edges[0], edges[1], edges[2])
             else:
-                raise ValueError(
-                    "You incorrectly set the weight corresponding to the graph's type.")
+                self.add_edge(edges[0], edges[1])
+        
 
     def add_vertex(self, vertex_name: str):
         self.vertices.add(vertex_name)
