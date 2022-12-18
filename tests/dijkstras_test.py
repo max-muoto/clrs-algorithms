@@ -41,6 +41,10 @@ class DijkstrasTest(unittest.TestCase):
         )
         shortest_paths = {"A": 0, "B": 6, "D": 1, "E": 2, "C": 7}
         self.assertEqual(Dijkstras.shortest_path(graph, "A"), shortest_paths)
+        shortest_paths = {"A": float("inf"), "B": 0, "D": 2, "E": 2, "C": 5}
+        self.assertEqual(Dijkstras.shortest_path(graph, "B"), shortest_paths)
+        shortest_paths = {"A": float("inf"), "B": float("inf"), "D": float("inf"), "E": float("inf"), "C": 0}
+        self.assertEqual(Dijkstras.shortest_path(graph, "C"), shortest_paths)
 
 
 
