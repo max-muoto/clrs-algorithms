@@ -28,15 +28,3 @@ class Prims:
                     heapq.heappush(pq, (min_dist[vertex], vertex))
 
         return parents
-
-
-def main():
-    graph = Graph(GraphType.UNDIRECTED_WEIGHTED)
-    graph.add_vertices(["A", "B", "C", "D", "E", "F", "G"])
-    graph.add_edges([("A", "B", 2), ("A", "C", 3),
-                    ("A", "D", 3), ("C", "D", 5), ("B", "C", 4), ("B", "C", 4), ("E", "B", 3), ("C", "E", 1), ("D", "E", 7), ("F", "E", 8), ("F", "G", 9), ("F", "C", 6)])
-    print(Prims.minimum_spanning_tree(graph, "A"))
-
-
-if __name__ == "__main__":
-    main()
