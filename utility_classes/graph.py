@@ -12,17 +12,12 @@ class GraphType(Enum):
 
 
 class Graph:
-    vertices: Set[str]
     edges: Dict[str, Union[Dict[str, int], Set[str]]]
     graph_type: GraphType
 
     def __init__(self, graph_type: GraphType):
         self.graph_type = graph_type
-        if self.is_weighted_graph:
-            self.edges = defaultdict(dict)
-        else:
-            self.edges = defaultdict(set)
-        self.vertices = set()
+        self.edges = {}
 
     @cached_property
     def is_directed_graph(self):
@@ -54,8 +49,11 @@ class Graph:
                 self.add_edge(edges[0], edges[1])
 
     def add_vertex(self, vertex_name: str):
-        self.vertices.add(vertex_name)
+        if self.is_weighted_graph:
+            self.edges[vertex_name] = {}
+        else:
+            self.edges[vertex_name] = set()
 
     def add_vertices(self, vertex_names: List[str]):
         for vertex in vertex_names:
-            self.vertices.add(vertex)
+            self.add_vertex(vertex)
