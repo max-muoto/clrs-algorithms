@@ -1,5 +1,6 @@
 from collections import defaultdict
 from enum import Enum
+from functools import cached_property
 from typing import Dict, Optional, Set, List, Union, Tuple
 
 
@@ -23,12 +24,13 @@ class Graph:
             self.edges = defaultdict(set)
         self.vertices = set()
 
+    @cached_property
     def is_directed_graph(self):
-        return self.graph_type == GraphType.DIRECTED_UNWEIGHTED or self.graph_type == GraphType.DIRECTED_WEIGHTED 
+        return self.graph_type == GraphType.DIRECTED_UNWEIGHTED or self.graph_type == GraphType.DIRECTED_WEIGHTED
 
+    @cached_property
     def is_weighted_graph(self):
-        return self.graph_type == GraphType.UNDIRECTED_WEIGHTED or self.graph_type == GraphType.DIRECTED_WEIGHTED 
-
+        return self.graph_type == GraphType.UNDIRECTED_WEIGHTED or self.graph_type == GraphType.DIRECTED_WEIGHTED
 
     def add_edge(self, u: str, v: str, weight: Optional[int]):
         if weight and self.is_weighted_graph():
@@ -50,7 +52,6 @@ class Graph:
                 self.add_edge(edges[0], edges[1], edges[2])
             else:
                 self.add_edge(edges[0], edges[1])
-        
 
     def add_vertex(self, vertex_name: str):
         self.vertices.add(vertex_name)
