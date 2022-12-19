@@ -18,7 +18,7 @@ class Graph:
 
     def __init__(self, graph_type: GraphType):
         self.graph_type = graph_type
-        if self.is_weighted_graph():
+        if self.is_weighted_graph:
             self.edges = defaultdict(dict)
         else:
             self.edges = defaultdict(set)
@@ -33,13 +33,13 @@ class Graph:
         return self.graph_type == GraphType.UNDIRECTED_WEIGHTED or self.graph_type == GraphType.DIRECTED_WEIGHTED
 
     def add_edge(self, u: str, v: str, weight: Optional[int]):
-        if weight and self.is_weighted_graph():
+        if weight and self.is_weighted_graph:
             self.edges[u][v] = weight
-            if not self.is_directed_graph():
+            if not self.is_directed_graph:
                 self.edges[v][u] = weight
-        elif not self.is_weighted_graph():
+        elif not self.is_weighted_graph:
             self.edges[u].add(v)
-            if not self.is_directed_graph():
+            if not self.is_directed_graph:
                 self.edges[v].add(u)
         else:
             raise ValueError(
