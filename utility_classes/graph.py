@@ -37,7 +37,8 @@ class Graph:
                 self.edges[v][u] = weight
         elif not self.is_weighted_graph():
             self.edges[u].add(v)
-            self.edges[v].add(u)
+            if not self.is_directed_graph():
+                self.edges[v].add(u)
         else:
             raise ValueError(
                 "You incorrectly set the weight corresponding to the graph's type.")
