@@ -3,7 +3,7 @@ from algorithms.bellman_ford import BellmanFord
 from utility_classes.graph import Graph, GraphType
 
 
-class DijkstrasTest(unittest.TestCase):
+class BellmanFordTest(unittest.TestCase):
     def test_simple_shortest_path_undirected(self):
         graph = Graph(GraphType.UNDIRECTED_WEIGHTED)
         graph.add_vertices(["A", "B", "C", "D", "E"])

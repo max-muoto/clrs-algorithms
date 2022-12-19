@@ -16,7 +16,7 @@ class Edge:
         self.weight = weight
 
 
-class Graph:
+class KruskalsGraph:
     vertices = set()
     edges = set()
     disjoint_forests = {}
@@ -67,22 +67,3 @@ class Graph:
             x.p = y.val
             if x.rank == y.rank:
                 y.rank += 1
-
-
-def main():
-    graph = Graph()
-    graph.add_edge("A", "B", 1)
-    graph.add_edge("A", "C", 3)
-    graph.add_edge("A", "D", 3)
-    graph.add_edge("C", "D", 2)
-    graph.add_edge("B", "C", 4)
-    graph.add_edge("E", "B", 3)
-    graph.add_edge("C", "E", 1)
-    graph.add_edge("D", "E", 3)
-    graph.add_edge("F", "E", 2)
-    graph.add_edge("F", "C", 9)
-    print("MST is: ", graph.kruskals("A"))
-
-
-if __name__ == "__main__":
-    main()
