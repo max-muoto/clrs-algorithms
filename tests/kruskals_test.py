@@ -15,8 +15,8 @@ class KruskalsTest(unittest.TestCase):
         graph.add_edge("D", "E", 3)
         graph.add_edge("F", "E", 2)
         graph.add_edge("F", "C", 9)
-        mst = {('F', 'E'), ('E', 'C'), ('B', 'E'), ('A', 'B'), ('D', 'C')}
-        self.assertEqual(graph.kruskals("A"), mst)
+        mst = {('A', 'B'), ('F', 'E'), ('C', 'E'), ('C', 'D'), ('A', 'C')}
+        self.assertEqual(graph.kruskals(), mst)
 
 
 if __name__ == "__main__":

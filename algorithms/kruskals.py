@@ -5,20 +5,9 @@ class DisjointForest:
         self.rank = rank
 
 
-class Edge:
-    u = None
-    v = None
-    weight = None
-
-    def __init__(self, u, v, weight):
-        self.u = u
-        self.v = v
-        self.weight = weight
-
-
 class KruskalsGraph:
     vertices = set()
-    edges = set()
+    edges = []
     disjoint_forests = {}
 
     # Add undirected edge between two vertices
@@ -28,22 +17,21 @@ class KruskalsGraph:
         if node2 not in self.vertices:
             self.vertices.add(node2)
 
-        self.edges.add(Edge(node1, node2, weight))
-        self.edges.add(Edge(node2, node1, weight))
+        self.edges.append((node1, node2, weight))
+        self.edges.append((node2, node1, weight))
 
-    def kruskals(self, root):
+    def kruskals(self):
         answer = set()
 
         for vertex in self.vertices:
             self.make_set(vertex)
 
         # Sort edges from least to greatest.
-        self.edges = sorted(self.edges, key=lambda x: x.weight)
-
+        self.edges.sort(key=lambda x: x[2])
         for edge in self.edges:
-            if self.findset(edge.u) != self.findset(edge.v):
-                answer = answer.union({(edge.u, edge.v)})
-                self.union(edge.u, edge.v)
+            if self.findset(edge[0]) != self.findset(edge[1]):
+                answer = answer.union({(edge[0], edge[1])})
+                self.union(edge[0], edge[1])
 
         return answer
 
