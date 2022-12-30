@@ -19,7 +19,8 @@ class KruskalsTest(unittest.TestCase):
         graph.add_edge("F", "C", 9)
         mst = {("A", "B"), ("F", "E"), ("C", "E"), ("C", "D"), ("A", "C")}
 
-        self.assertEqual(Kruskals.minimum_spanning_tree(graph), mst)
+        kruskals = Kruskals()
+        self.assertEqual(kruskals.minimum_spanning_tree(graph), mst)
 
 
 if __name__ == "__main__":
