@@ -36,17 +36,20 @@ class KruskalsGraph:
         return answer
 
     def make_set(self, vertex):
-        self.disjoint_forests[vertex] = DisjointForest(
-            p=vertex, val=vertex, rank=0)
+        self.disjoint_forests[vertex] = DisjointForest(p=vertex, val=vertex, rank=0)
 
     def findset(self, vertex):
         if vertex != self.disjoint_forests[vertex].p:
             self.disjoint_forests[vertex].p = self.findset(
-                self.disjoint_forests[vertex].p)
+                self.disjoint_forests[vertex].p
+            )
         return self.disjoint_forests[vertex].p
 
     def union(self, x, y):
-        return self.link(self.disjoint_forests[self.findset(x)], self.disjoint_forests[self.findset(y)])
+        return self.link(
+            self.disjoint_forests[self.findset(x)],
+            self.disjoint_forests[self.findset(y)],
+        )
 
     def link(self, x, y):
         if x.rank > y.rank:

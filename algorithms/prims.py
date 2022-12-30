@@ -21,7 +21,9 @@ class Prims:
             curr = heapq.heappop(pq)
             curr_vertex = curr[1]
             for vertex in vertex_adjs[curr_vertex]:
-                if (min_dist[vertex], vertex) in pq and vertex_adjs[curr_vertex][vertex] < min_dist[vertex]:
+                if (min_dist[vertex], vertex) in pq and vertex_adjs[curr_vertex][
+                    vertex
+                ] < min_dist[vertex]:
                     parents[vertex] = curr_vertex
                     min_dist[vertex] = vertex_adjs[curr_vertex][vertex]
                     heapq.heappush(pq, (min_dist[vertex], vertex))

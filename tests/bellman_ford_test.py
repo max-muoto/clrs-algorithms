@@ -43,8 +43,13 @@ class BellmanFordTest(unittest.TestCase):
         self.assertEqual(BellmanFord.shortest_path(graph, "A"), shortest_paths)
         shortest_paths = {"A": float("inf"), "B": 0, "D": 2, "E": 2, "C": 5}
         self.assertEqual(BellmanFord.shortest_path(graph, "B"), shortest_paths)
-        shortest_paths = {"A": float("inf"), "B": float(
-            "inf"), "D": float("inf"), "E": float("inf"), "C": 0}
+        shortest_paths = {
+            "A": float("inf"),
+            "B": float("inf"),
+            "D": float("inf"),
+            "E": float("inf"),
+            "C": 0,
+        }
         self.assertEqual(BellmanFord.shortest_path(graph, "C"), shortest_paths)
 
 

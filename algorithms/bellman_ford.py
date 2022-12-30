@@ -12,7 +12,7 @@ class BellmanFord:
         previous_nodes = {}
 
         for vertex in vertex_adjs:
-            distances[vertex] = float('inf')
+            distances[vertex] = float("inf")
             previous_nodes[vertex] = None
 
         distances[source] = 0

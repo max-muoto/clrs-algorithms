@@ -21,11 +21,17 @@ class Graph:
 
     @cached_property
     def is_directed_graph(self):
-        return self.graph_type == GraphType.DIRECTED_UNWEIGHTED or self.graph_type == GraphType.DIRECTED_WEIGHTED
+        return (
+            self.graph_type == GraphType.DIRECTED_UNWEIGHTED
+            or self.graph_type == GraphType.DIRECTED_WEIGHTED
+        )
 
     @cached_property
     def is_weighted_graph(self):
-        return self.graph_type == GraphType.UNDIRECTED_WEIGHTED or self.graph_type == GraphType.DIRECTED_WEIGHTED
+        return (
+            self.graph_type == GraphType.UNDIRECTED_WEIGHTED
+            or self.graph_type == GraphType.DIRECTED_WEIGHTED
+        )
 
     def add_edge(self, u: str, v: str, weight: Optional[int]):
         if weight and self.is_weighted_graph:
@@ -38,9 +44,12 @@ class Graph:
                 self.edges[v].add(u)
         else:
             raise ValueError(
-                "You incorrectly set the weight corresponding to the graph's type.")
+                "You incorrectly set the weight corresponding to the graph's type."
+            )
 
-    def add_edges(self, edges: Union[List[Tuple[str, str]], List[Tuple[str, str, int]]]):
+    def add_edges(
+        self, edges: Union[List[Tuple[str, str]], List[Tuple[str, str, int]]]
+    ):
         weighted_edges = len(edges[0]) == 3
         for edges in edges:
             if weighted_edges:

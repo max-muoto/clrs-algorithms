@@ -14,7 +14,7 @@ class Huffman:
     def compress(nodes):
         n = len(nodes)
         heapq.heapify(nodes)
-        for _ in range(0, n-1):
+        for _ in range(0, n - 1):
             x = heapq.heappop(nodes)
             y = heapq.heappop(nodes)
             freq = x[0] + y[0]
@@ -26,8 +26,14 @@ class Huffman:
 
 
 def main():
-    chars = [(5, HuffmanNode("A", 5)), (9, HuffmanNode("E", 9)), (12, HuffmanNode("C", 12)),
-             (13, HuffmanNode("B", 13)), (16, HuffmanNode("D", 16)), (45, HuffmanNode("A", 45))]
+    chars = [
+        (5, HuffmanNode("A", 5)),
+        (9, HuffmanNode("E", 9)),
+        (12, HuffmanNode("C", 12)),
+        (13, HuffmanNode("B", 13)),
+        (16, HuffmanNode("D", 16)),
+        (45, HuffmanNode("A", 45)),
+    ]
     # Root node for the tree
     node = Huffman.compress(chars)[1]
     print(node.freq)

@@ -4,11 +4,8 @@ def recursive_activity_selector(s, f, k, n):
         print(s[m])
         print(f[k])
         m += 1
-    print("stop")
-    print(m)
     if m <= n:
-        print("here")
-        return {m+1}.union(recursive_activity_selector(s, f, m, n))
+        return {m + 1}.union(recursive_activity_selector(s, f, m, n))
     else:
         return set()
 

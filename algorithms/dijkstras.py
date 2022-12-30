@@ -27,8 +27,7 @@ class Dijkstras:
             for adjacent_vertex in vertex_adjs[curr_vertex]:
                 # Check if we can decrease the distance
                 possible_value = (
-                    distances[curr_vertex] +
-                    vertex_adjs[curr_vertex][adjacent_vertex]
+                    distances[curr_vertex] + vertex_adjs[curr_vertex][adjacent_vertex]
                 )
 
                 # If so, update our dictionaries and the PQ
