@@ -1,3 +1,6 @@
+from utility_classes.graph import Graph
+
+
 class DisjointForest:
     def __init__(self, p, val, rank):
         self.p = p
@@ -5,30 +8,21 @@ class DisjointForest:
         self.rank = rank
 
 
-class KruskalsGraph:
-    vertices = set()
-    edges = []
+class Kruskals:
     disjoint_forests = {}
 
-    # Add undirected edge between two vertices
-    def add_edge(self, node1, node2, weight):
-        if node1 not in self.vertices:
-            self.vertices.add(node1)
-        if node2 not in self.vertices:
-            self.vertices.add(node2)
-
-        self.edges.append((node1, node2, weight))
-        self.edges.append((node2, node1, weight))
-
-    def kruskals(self):
+    def minimum_spanning_tree(self, graph: Graph):
         answer = set()
+        adj_vertices = graph.vertex_adjacencies
+        edges = graph.edges
 
-        for vertex in self.vertices:
+        for vertex in adj_vertices:
             self.make_set(vertex)
 
-        # Sort edges from least to greatest.
-        self.edges.sort(key=lambda x: x[2])
-        for edge in self.edges:
+        # Sort edges from least to greatest in terms of weight.
+        edges.sort(key=lambda edge: edge[2])
+
+        for edge in edges:
             if self.findset(edge[0]) != self.findset(edge[1]):
                 answer = answer.union({(edge[0], edge[1])})
                 self.union(edge[0], edge[1])

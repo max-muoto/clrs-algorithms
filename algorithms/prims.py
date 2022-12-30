@@ -5,7 +5,7 @@ from utility_classes.graph import Graph, GraphType
 class Prims:
     @staticmethod
     def minimum_spanning_tree(graph: Graph, root: str):
-        vertex_adjs = graph.edges
+        vertex_adjs = graph.vertex_adjacencies
 
         parents = {}
         min_dist = {}

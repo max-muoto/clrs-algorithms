@@ -6,7 +6,7 @@ from utility_classes.graph import Graph
 class Dijkstras:
     @staticmethod
     def shortest_path(graph: Graph, source: str):
-        vertex_adjs = graph.edges
+        vertex_adjs = graph.vertex_adjacencies
 
         distances = {}
         previous_nodes = {}
