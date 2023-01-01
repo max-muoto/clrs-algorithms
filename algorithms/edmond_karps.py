@@ -21,7 +21,11 @@ class EdmondKarps:
                 for vertex in adj_vertices[curr_vertex]:
                     edge = (curr_vertex, vertex)
                     capacity = adj_vertices[curr_vertex][vertex]
-                    if vertex in predecessors and vertex != source and capacity > flows[edge]:
+                    if (
+                        vertex in predecessors
+                        and vertex != source
+                        and capacity > flows[edge]
+                    ):
                         predecessors[vertex] = edge
                         queue.append(vertex)
 
@@ -33,8 +37,10 @@ class EdmondKarps:
                 curr_vertex = predecessors[prev_vertex]
                 while curr_vertex in predecessors:
                     edge = (prev_vertex, curr_vertex)
-                    curr_flow = min(
-                        curr_vertex, adj_vertices[curr_vertex][prev_vertex]) - flows[edge]
+                    curr_flow = (
+                        min(curr_vertex, adj_vertices[curr_vertex][prev_vertex])
+                        - flows[edge]
+                    )
 
                 prev_vertex = sink
                 curr_vertex = predecessors[prev_vertex]
