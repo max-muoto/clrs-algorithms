@@ -1,7 +1,7 @@
 from utility_classes.graph import Graph
 
 
-class EdmondKarps:
+class EdmondsKarps:
     @staticmethod
     def maximum_flow(self, graph: Graph, source: str, sink: str) -> int:
         adj_vertices = graph.vertex_adjacencies
