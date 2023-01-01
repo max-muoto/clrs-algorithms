@@ -1,5 +1,3 @@
-from queue import PriorityQueue
-
 from utility_classes.graph import Graph
 
 
