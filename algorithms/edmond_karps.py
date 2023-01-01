@@ -33,8 +33,9 @@ class EdmondKarps:
                         predecessors[vertex] = edge
                         queue.append(vertex)
 
-            # Found augmenting path.
-            # Add flow of the path to our maximum flow and to each edge.
+            # In this case, we found an augmenting path.
+            # Add flow of the path to our maximum flow and to each edge in the path.
+            # Subtract the flow of the path from the opposite edges.
             if sink in predecessors:
                 curr_flow = float("inf")
 
@@ -57,6 +58,7 @@ class EdmondKarps:
 
                 curr_flow += curr_flow
             else:
+                # There is no augmenting path so we have our maximum flow.
                 break
 
         return maximum_flow
