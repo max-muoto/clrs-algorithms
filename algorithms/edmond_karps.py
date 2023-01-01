@@ -2,9 +2,11 @@ from utility_classes.graph import Graph
 
 
 class EdmondKarps:
+    @staticmethod
     def maximum_flow(self, graph: Graph, source: str, sink: str) -> int:
         adj_vertices = graph.vertex_adjacencies
         edges = graph.edges
+
         maximum_flow = 0
         # Holds parent vertices to track paths.
         predecessors = {}
@@ -16,6 +18,8 @@ class EdmondKarps:
         while True:
             queue = []
             queue.append(source)
+
+            # Run BFS from source.
             while queue:
                 curr_vertex = queue.pop(0)
                 for vertex in adj_vertices[curr_vertex]:
@@ -30,6 +34,7 @@ class EdmondKarps:
                         queue.append(vertex)
 
             # Found augmenting path.
+            # Add flow of the path to our maximum flow and to each edge.
             if sink in predecessors:
                 curr_flow = float("inf")
 
