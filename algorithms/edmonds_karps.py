@@ -3,7 +3,7 @@ from utility_classes.graph import Graph
 
 class EdmondsKarps:
     @staticmethod
-    def maximum_flow(self, graph: Graph, source: str, sink: str) -> int:
+    def maximum_flow(graph: Graph, source: str, sink: str) -> int:
         adj_vertices = graph.vertex_adjacencies
         edges = graph.edges
 
