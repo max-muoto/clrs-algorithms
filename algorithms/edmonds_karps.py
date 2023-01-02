@@ -37,13 +37,13 @@ class EdmondsKarps:
             # Add flow of the path to our maximum flow and to each edge in the path.
             # Subtract the flow of the path from the opposite edges.
             if sink in predecessors:
-                curr_flow = float("inf")
+                curr_path_flow = float("inf")
 
                 prev_vertex = sink
                 curr_vertex = predecessors[prev_vertex]
                 while curr_vertex in predecessors:
                     edge = (prev_vertex, curr_vertex)
-                    curr_flow = (
+                    curr_path_flow = (
                         min(curr_vertex, adj_vertices[curr_vertex][prev_vertex])
                         - flows[edge]
                     )
@@ -52,11 +52,11 @@ class EdmondsKarps:
                 curr_vertex = predecessors[prev_vertex]
                 while curr_vertex in predecessors:
                     edge = (prev_vertex, curr_vertex)
-                    flows[edge] += curr_flow
+                    flows[edge] += curr_path_flow
                     opposite_edge = (curr_vertex, prev_vertex)
-                    flows[opposite_edge] -= curr_flow
+                    flows[opposite_edge] -= curr_path_flow
 
-                curr_flow += curr_flow
+                maximum_flow += curr_path_flow
             else:
                 # There is no augmenting path so we have our maximum flow.
                 break
