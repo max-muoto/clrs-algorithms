@@ -1,10 +1,17 @@
 import heapq
 
 from utility_classes.tree_node import TreeNode
+from typing import Optional
 
 
 class HuffmanNode(TreeNode):
-    def __init__(self, val, freq, left=None, right=None):
+    def __init__(
+        self,
+        val: str,
+        freq: int,
+        left: Optional["HuffmanNode"] = None,
+        right: Optional["HuffmanNode"] = None,
+    ):
         super().__init__(val, left, right)
         self.freq = freq
 
