@@ -1,4 +1,5 @@
 from utility_classes.graph import Graph
+from typing import Set, Tuple
 
 
 class DisjointForest:
@@ -11,7 +12,7 @@ class DisjointForest:
 class Kruskals:
     disjoint_forests = {}
 
-    def minimum_spanning_tree(self, graph: Graph):
+    def minimum_spanning_tree(self, graph: Graph) -> Set[Tuple[str, str]]:
         answer = set()
         adj_vertices = graph.vertex_adjacencies
         edges = graph.edges

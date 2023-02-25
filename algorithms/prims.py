@@ -1,10 +1,11 @@
 import heapq
+from typing import Dict, Optional
 from utility_classes.graph import Graph, GraphType
 
 
 class Prims:
     @staticmethod
-    def minimum_spanning_tree(graph: Graph, root: str):
+    def minimum_spanning_tree(graph: Graph, root: str) -> Dict[str, Optional[str]]:
         vertex_adjs = graph.vertex_adjacencies
 
         parents = {}
