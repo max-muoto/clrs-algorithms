@@ -1,11 +1,12 @@
 from queue import PriorityQueue
+from typing import Dict
 
 from utility_classes.graph import Graph
 
 
 class Dijkstras:
     @staticmethod
-    def shortest_path(graph: Graph, source: str):
+    def shortest_path(graph: Graph, source: str) -> Dict[str, int]:
         vertex_adjs = graph.vertex_adjacencies
 
         distances = {}

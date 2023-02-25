@@ -18,7 +18,7 @@ class HuffmanNode(TreeNode):
 
 class Huffman:
     @staticmethod
-    def compress(nodes):
+    def compress(nodes) -> HuffmanNode:
         n = len(nodes)
         heapq.heapify(nodes)
         for _ in range(0, n - 1):
@@ -30,21 +30,3 @@ class Huffman:
             z = HuffmanNode(None, freq, left, right)
             heapq.heappush(nodes, (freq, z))
         return heapq.heappop(nodes)
-
-
-def main():
-    chars = [
-        (5, HuffmanNode("A", 5)),
-        (9, HuffmanNode("E", 9)),
-        (12, HuffmanNode("C", 12)),
-        (13, HuffmanNode("B", 13)),
-        (16, HuffmanNode("D", 16)),
-        (45, HuffmanNode("A", 45)),
-    ]
-    # Root node for the tree
-    node = Huffman.compress(chars)[1]
-    print(node.freq)
-
-
-if __name__ == "__main__":
-    main()
