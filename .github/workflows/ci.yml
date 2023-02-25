@@ -29,3 +29,6 @@ jobs:
       - name: Test with unnitest
         run: |
           python -m unittest
+      - name: "Check that Black was run"
+        run: |
+          black --check .
