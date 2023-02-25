@@ -1,4 +1,5 @@
 import unittest
+
 from algorithms.edmonds_karps import EdmondsKarps
 from utility_classes.graph import Graph, GraphType
 

@@ -1,4 +1,5 @@
 import unittest
+
 from algorithms.prims import Prims
 from utility_classes.graph import Graph, GraphType
 

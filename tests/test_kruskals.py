@@ -1,4 +1,5 @@
 import unittest
+
 from algorithms.kruskals import Kruskals
 from utility_classes.graph import Graph, GraphType
 

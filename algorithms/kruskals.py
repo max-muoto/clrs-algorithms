@@ -1,5 +1,6 @@
-from utility_classes.graph import Graph
 from typing import Set, Tuple
+
+from utility_classes.graph import Graph
 
 
 class DisjointForest:

@@ -1,4 +1,5 @@
 import unittest
+
 from algorithms.bellman_ford import BellmanFord
 from utility_classes.graph import Graph, GraphType
 

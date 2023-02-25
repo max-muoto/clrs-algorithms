@@ -1,7 +1,7 @@
 import heapq
+from typing import Optional
 
 from utility_classes.tree_node import TreeNode
-from typing import Optional
 
 
 class HuffmanNode(TreeNode):

@@ -1,4 +1,5 @@
 import unittest
+
 from algorithms.dijkstras import Dijkstras
 from utility_classes.graph import Graph, GraphType
 

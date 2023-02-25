@@ -1,4 +1,5 @@
 import unittest
+
 from algorithms.huffman import Huffman, HuffmanNode
 
 

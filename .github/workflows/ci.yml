@@ -32,3 +32,6 @@ jobs:
       - name: "Check that Black was run"
         run: |
           black --check .
+      - name: "Run isort"
+        run: |
+          isort .

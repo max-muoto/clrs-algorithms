@@ -1,6 +1,7 @@
 from collections import defaultdict
 from pprint import *
 
+
 # O(w * n) time complexity
 def knapsack(p, w, n, W):
     solutions = defaultdict(lambda: defaultdict(int))

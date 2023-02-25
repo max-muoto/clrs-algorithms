@@ -1,6 +1,6 @@
 from enum import Enum
 from functools import cached_property
-from typing import Dict, Optional, Set, List, Union, Tuple
+from typing import Dict, List, Optional, Set, Tuple, Union
 
 
 class GraphType(Enum):
